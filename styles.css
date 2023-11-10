@@ -1,6 +1,11 @@
 @font-face {
     font-family: "Pixeboy";
-    src: url("./Pixeboy.ttf") format("truetype");
+    src: url("./Fonts/Pixeboy.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "VinaSans";
+    src: url("./Fonts/VinaSans-Regular.ttf") format("truetype");
 }
 
 html,
@@ -19,6 +24,15 @@ body {
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+#title{
+    position: absolute;
+    top: 0px;
+    left: 30px;
+    font-family: "VinaSans";
+    font-size: 2em;
+    font-weight: 900;
 }
 
 #score {
