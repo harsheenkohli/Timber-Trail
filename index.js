@@ -157,7 +157,7 @@ window.addEventListener("keydown", function (event) {
     }
 });
 
-window.addEventListener("pointerdown", function (event) {
+window.addEventListener("mousedown", function (event) {
     if (phase == "waiting") {
         lastTimestamp = undefined;
         introductionElement.style.opacity = 0;
@@ -166,7 +166,22 @@ window.addEventListener("pointerdown", function (event) {
     }
 });
 
-window.addEventListener("pointerup", function (event) {
+window.addEventListener("mouseup", function (event) {
+    if (phase == "stretching") {
+        phase = "turning";
+    }
+});
+
+window.addEventListener("touchstart", function (event) {
+    if (phase == "waiting") {
+        lastTimestamp = undefined;
+        introductionElement.style.opacity = 0;
+        phase = "stretching";
+        window.requestAnimationFrame(animate);
+    }
+});
+
+window.addEventListener("touchend", function (event) {
     if (phase == "stretching") {
         phase = "turning";
     }
