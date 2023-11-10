@@ -172,20 +172,21 @@ window.addEventListener("mouseup", function (event) {
     }
 });
 
-window.addEventListener("touchstart", function (event) {
-    if (phase == "waiting") {
+window.ontouchstart = function(event) {
+    if (phase === "waiting") {
         lastTimestamp = undefined;
         introductionElement.style.opacity = 0;
         phase = "stretching";
         window.requestAnimationFrame(animate);
     }
-});
+};
 
-window.addEventListener("touchend", function (event) {
-    if (phase == "stretching") {
+
+window.ontouchend = function (event) {
+    if (phase === "stretching") {
         phase = "turning";
     }
-});
+};
 
 window.addEventListener("resize", function (event) {
     canvas.width = window.innerWidth;
