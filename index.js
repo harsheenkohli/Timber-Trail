@@ -20,8 +20,6 @@ let platforms = [];
 let sticks = [];
 let trees = [];
 
-// Todo: Save high score to localStorage (?)
-
 let score = 0;
 
 // Configuration
