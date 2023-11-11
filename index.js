@@ -228,6 +228,7 @@ function animate(timestamp) {
                     scoreElement.innerText = score;
 
                     if (perfectHit) {
+                        playDoubleScoreSound();
                         perfectElement.style.opacity = 1;
                         setTimeout(() => (perfectElement.style.opacity = 0), 1000);
                     }
@@ -544,4 +545,10 @@ function playDeadSound() {
     const deadSound = document.getElementById("deadSound");
     deadSound.currentTime = 0;
     deadSound.play();
+}
+
+function playDoubleScoreSound(){
+    const doubleScoreSound = new Audio("./Audio/doubleScore.mp3");
+    doubleScoreSound.currentTime = 0;
+    doubleScoreSound.play();
 }
