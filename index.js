@@ -3,7 +3,7 @@ Array.prototype.last = function () {
     return this[this.length - 1];
 };
 
-// A sinus function that acceps degrees instead of radians
+// A sinus function that accepts degrees instead of radians
 Math.sinus = function (degree) {
     return Math.sin((degree / 180) * Math.PI);
 };
@@ -62,6 +62,8 @@ const introductionElement = document.getElementById("introduction");
 const perfectElement = document.getElementById("perfect");
 const restartButton = document.getElementById("restart");
 const scoreElement = document.getElementById("score");
+
+// var hitSound = new Audio("./Audio/hitSound.mp3");
 
 // Initialize layout
 resetGame();
@@ -172,7 +174,7 @@ window.addEventListener("mouseup", function (event) {
     }
 });
 
-window.ontouchstart = function(event) {
+window.ontouchstart = function (event) {
     if (phase === "waiting") {
         lastTimestamp = undefined;
         introductionElement.style.opacity = 0;
@@ -209,6 +211,8 @@ function animate(timestamp) {
             return; // Stop the loop
         case "stretching": {
             sticks.last().length += (timestamp - lastTimestamp) / stretchingSpeed;
+            playHitSound();
+
             break;
         }
         case "turning": {
@@ -527,4 +531,10 @@ function getHillY(windowX, baseHeight, amplitude, stretch) {
 function getTreeY(x, baseHeight, amplitude) {
     const sineBaseY = window.innerHeight - baseHeight;
     return Math.sinus(x) * amplitude + sineBaseY;
+}
+
+function playHitSound() {
+    const hitSound = document.getElementById("hitSound");
+    hitSound.currentTime = -3; // Rewind to the beginning to allow rapid replay
+    hitSound.play();
 }
