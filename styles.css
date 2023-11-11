@@ -44,6 +44,15 @@ body {
     font-weight: 900;
 }
 
+#highScoreElement{
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    font-family: "Pixeboy";
+    font-size: 1.3em;
+    font-weight: 900;
+}
+
 #introduction {
     width: 350px;
     height: 150px;
