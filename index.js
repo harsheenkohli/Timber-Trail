@@ -153,6 +153,7 @@ resetGame();
 // If space was pressed restart the game
 window.addEventListener("keydown", function (event) {
     if (event.key == " ") {
+        playSpaceRestartSound();
         event.preventDefault();
         resetGame();
         return;
@@ -551,4 +552,10 @@ function playDoubleScoreSound(){
     const doubleScoreSound = new Audio("./Audio/doubleScore.mp3");
     doubleScoreSound.currentTime = 0;
     doubleScoreSound.play();
+}
+
+function playSpaceRestartSound(){
+    const spaceRestartSound = new Audio("./Audio/spaceRestart.wav");
+    spaceRestartSound.currentTime = 0;
+    spaceRestartSound.play();
 }
