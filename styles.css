@@ -44,12 +44,12 @@ body {
     font-weight: 900;
 }
 
-#highScoreElement{
+#highScoreElement {
     position: absolute;
     top: 60px;
     right: 30px;
-    font-family: "Pixeboy";
-    font-size: 1.3em;
+    font-family: "Pixeboy", 'Stencil', sans-serif;
+    font-size: 1.25em;
     font-weight: 900;
 }
 
