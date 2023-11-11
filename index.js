@@ -280,6 +280,7 @@ function animate(timestamp) {
         case "falling": {
             if (sticks.last().rotation < 180)
                 sticks.last().rotation += (timestamp - lastTimestamp) / turningSpeed;
+                playDeadSound();
 
             heroY += (timestamp - lastTimestamp) / fallingSpeed;
             const maxHeroY =
@@ -537,4 +538,10 @@ function playHitSound() {
     const hitSound = document.getElementById("hitSound");
     hitSound.currentTime = -3; // Rewind to the beginning to allow rapid replay
     hitSound.play();
+}
+
+function playDeadSound() {
+    const deadSound = document.getElementById("deadSound");
+    deadSound.currentTime = 0;
+    deadSound.play();
 }
