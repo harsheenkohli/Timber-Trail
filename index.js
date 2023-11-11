@@ -8,6 +8,7 @@ Math.sinus = function (degree) {
     return Math.sin((degree / 180) * Math.PI);
 };
 
+let highScore = parseInt(localStorage.getItem("highScore")) || 0;
 // Game data
 let phase = "waiting"; // waiting | stretching | turning | walking | transitioning | falling
 let lastTimestamp; // The timestamp of the previous requestAnimationFrame cycle
@@ -71,6 +72,15 @@ resetGame();
 // Resets game variables and layouts but does not start the game (game starts on keypress)
 function resetGame() {
     // Reset game progress
+    if (score > highScore) {
+        // Update the high score
+        highScore = score;
+        // Save the updated high score to local storage
+        localStorage.setItem("highScore", highScore);
+    }
+
+    updateHighScore();
+
     phase = "waiting";
     lastTimestamp = undefined;
     sceneOffset = 0;
@@ -568,4 +578,11 @@ function playLostRestart() {
     const lostRestartSound = new Audio("./Audio/lostRestart.mp3");
     lostRestartSound.currentTime = 0;
     lostRestartSound.play();
+}
+
+function updateHighScore() {
+    const highScoreElement = document.getElementById("highScoreElement"); // Assuming you have an element to display high score
+
+    // Update the displayed high score
+    highScoreElement.innerText = `High Score: ${highScore}`;
 }
