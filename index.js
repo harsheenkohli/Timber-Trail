@@ -76,6 +76,8 @@ function resetGame() {
     sceneOffset = 0;
     score = 0;
 
+    // playLostRestart();
+
     introductionElement.style.opacity = 1;
     perfectElement.style.opacity = 0;
     restartButton.style.display = "none";
@@ -210,6 +212,7 @@ function animate(timestamp) {
     switch (phase) {
         case "waiting":
             return; // Stop the loop
+
         case "stretching": {
             sticks.last().length += (timestamp - lastTimestamp) / stretchingSpeed;
             playHitSound();
@@ -282,7 +285,7 @@ function animate(timestamp) {
         case "falling": {
             if (sticks.last().rotation < 180)
                 sticks.last().rotation += (timestamp - lastTimestamp) / turningSpeed;
-                playDeadSound();
+            playDeadSound();
 
             heroY += (timestamp - lastTimestamp) / fallingSpeed;
             const maxHeroY =
@@ -351,6 +354,7 @@ restartButton.addEventListener("click", function (event) {
     event.preventDefault();
     resetGame();
     restartButton.style.display = "none";
+    playLostRestart();
 });
 
 function drawPlatforms() {
@@ -548,14 +552,20 @@ function playDeadSound() {
     deadSound.play();
 }
 
-function playDoubleScoreSound(){
+function playDoubleScoreSound() {
     const doubleScoreSound = new Audio("./Audio/doubleScore.mp3");
     doubleScoreSound.currentTime = 0;
     doubleScoreSound.play();
 }
 
-function playSpaceRestartSound(){
+function playSpaceRestartSound() {
     const spaceRestartSound = new Audio("./Audio/spaceRestart.wav");
     spaceRestartSound.currentTime = 0;
     spaceRestartSound.play();
+}
+
+function playLostRestart() {
+    const lostRestartSound = new Audio("./Audio/lostRestart.mp3");
+    lostRestartSound.currentTime = 0;
+    lostRestartSound.play();
 }
