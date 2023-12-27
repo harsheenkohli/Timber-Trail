@@ -581,7 +581,7 @@ function playLostRestart() {
 }
 
 function updateHighScore() {
-    const highScoreElement = document.getElementById("highScoreElement"); // Assuming you have an element to display high score
+    const highScoreElement = document.getElementById("highScoreElement");
 
     // Update the displayed high score
     highScoreElement.innerText = `High Score: ${highScore}`;
