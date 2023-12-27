@@ -1,4 +1,4 @@
-/ Extend the base functionality of JavaScript
+// Extend the base functionality of JavaScript
 Array.prototype.last = function () {
     return this[this.length - 1];
 };
