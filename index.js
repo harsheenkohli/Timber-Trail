@@ -146,9 +146,8 @@ function generatePlatform() {
     const minimumWidth = 20;
     const maximumWidth = 100;
 
-    // X coordinate of the right edge of the furthest platform
     const lastPlatform = platforms[platforms.length - 1];
-    let furthestX = lastPlatform.x + lastPlatform.w;
+    let furthestX = lastPlatform ? lastPlatform.x + lastPlatform.w : 0;
 
     const x =
         furthestX +
@@ -158,6 +157,14 @@ function generatePlatform() {
         minimumWidth + Math.floor(Math.random() * (maximumWidth - minimumWidth));
 
     platforms.push({ x, w });
+
+    // Remove the first platform if the array gets too large
+    if (platforms.length > MAX_PLATFORMS) {
+        const removedPlatform = platforms.splice(0, 1)[0];
+        // Set references to null to help with memory management
+        // Note: This assumes there are no other references to the platform object
+        removedPlatform = null;
+    }
 }
 
 resetGame();
